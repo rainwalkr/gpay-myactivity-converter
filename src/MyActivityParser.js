@@ -13,11 +13,7 @@ export default class MyActivityParser {
                 // Parse the uploaded HTML
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlString, "text/html");
-                console.log(doc)
-
                 let entries = doc.querySelectorAll('.outer-cell .mdl-grid');
-                // let entry = doc.querySelector('.outer-cell .mdl-grid').querySelector('.content-cell.mdl-typography--body-1').innerHTML;
-                // console.log(entry);
 
                 let transactions = []
                 let unmatchedBodies = [];
@@ -40,18 +36,24 @@ export default class MyActivityParser {
                         unmatchedBodies.push(contentBody)
                     }
                 })
-                let metrics = {
+                let fileMetrics = {
                     total: entries.length,
                     matched: transactions.length,
                     unmatched: unmatchedBodies.length
                 }
-                console.log(unmatchedBodies)
-                console.log(transactions)
-                // csvString = collectionToCsv(transactions);
-                // downloadCsv(csvString)
+                let transactionMetrics = {
+                    firstDate: null,
+                    lastDate: null
+                }
+                if (transactions.length) {
+                    transactionMetrics.firstDate = transactions[transactions.length - 1]?.date
+                    transactionMetrics.lastDate = transactions[0]?.date
+                }
+
                 resolve({
-                    metrics,
-                    transactions
+                    fileMetrics,
+                    transactions,
+                    transactionMetrics
                 })
             };
         })
@@ -113,6 +115,9 @@ export default class MyActivityParser {
                     break;
                 }
             }
+        }
+        if (amount) {
+            amount = amount.replace(/[^0-9.]/g, "")
         }
         return {
             type,

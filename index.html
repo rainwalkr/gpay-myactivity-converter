@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,delete,description,download,security,settings,shield_lock,upload_file&display=block"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,delete,description,download,file_download_off,security,settings,shield_lock,upload_file&display=block"
     rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gpay-myactivity-converter</title>
@@ -129,20 +129,30 @@
               </div>
             </div>
             <div class="p-6">
-              <div
-                class="flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
+              <div id="noResultFile" class="p-3 flex flex-col items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-surface-container text-outline rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <span class="material-symbols-outlined !text-4xl" data-original-icon="cloud_upload">file_download_off</span>
+                </div>
+                <p class="text-on-surface-variant text-outline">No files converted yet</p>
+              </div>
+              <div id="resultFile"
+                class="hidden flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
                 <div class="flex items-center gap-2"><span
                     class="material-symbols-outlined text-secondary">description</span>
-                  <div class="flex flex-col"><span class=" font-semibold text-on-surface">converted_data.csv</span>
+                  <div class="flex flex-col">
+                    <a href="#" id="resultFileLink" title="Press to download">
+                      <span class=" font-semibold text-on-surface">converted_data.csv</span>
+                    </a>
                   </div>
                 </div><span class="material-symbols-outlined text-green-600">check_circle</span>
               </div>
-              <button
+              <!-- <button
                 class="w-full bg-secondary text-on-secondary py-3 rounded-lg  flex items-center justify-center gap-2 opacity-50 cursor-not-allowed hover:bg-secondary/90 transition-all"
                 disabled="" id="downloadBtn">
                 <span class="material-symbols-outlined">download</span>
                 Download CSV
-              </button>
+              </button> -->
             </div>
           </div>
         </div>

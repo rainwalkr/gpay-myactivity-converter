@@ -6,25 +6,33 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,delete,description,download,file_download_off,settings,shield_lock,upload_file&display=block"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,dark_mode,delete,description,download,file_download_off,settings,shield_lock,upload_file&display=block"
     rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GPay My Activity Converter</title>
 </head>
 
 <body
-  class="font-inter bg-surface-bright text-on-surface min-h-screen py-12 px-6 md:px-12 flex flex-col items-center text-body-mobile md:text-body">
+  class="font-inter bg-surface-bright text-on-surface min-h-screen py-12 px-4 md:px-12 flex flex-col items-center text-body-mobile md:text-body">
   <!-- Main Workspace (Single Column) -->
   <main class="w-full max-w-3xl space-y-2xl">
     <!-- Header Branding -->
-    <header class="text-center">
-      <h1 class="text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight mb-2">
-        GPay <span class="text-primary">My Activity</span> To <span class="text-secondary">CSV</span>
+    <header
+      class="text-center bg-surface-container-lowest p-6 rounded-4xl flex justify-between items-center gap-2 shadow-sm/5">
+      <div class="hidden md:block w-8 h-8"></div>
+      <h1 class="text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+        GPay <span class="text-primary">MyActivity</span> Converter
       </h1>
-      <p class="text-on-surface-variant max-w-lg mx-auto">Convert GPay My Activity HTML into clean,
-        structured CSV data.</p>
+      <button
+        class="cursor-pointer inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">
+        <span class="material-symbols-outlined">dark_mode</span>
+      </button>
     </header>
     <div class="space-y-12">
+      <!-- <section>
+          <p class="text-on-surface-variant">Convert GPay My Activity HTML file into clean,
+        structured CSV file.</p>
+      </section> -->
       <!-- 1. Upload Zone -->
       <section class="space-y-6">
         <div class="flex items-center gap-3">

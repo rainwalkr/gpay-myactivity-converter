@@ -6,43 +6,51 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,delete,description,download,file_download_off,settings,shield_lock,upload_file&display=block"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=account_circle,check_circle,dark_mode,delete,description,desktop_windows,download,file_download_off,light_mode,settings,shield_lock,upload_file&display=block"
     rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GPay My Activity Converter</title>
 </head>
 
 <body
-  class="font-inter bg-surface-bright text-on-surface min-h-screen py-12 px-6 md:px-12 flex flex-col items-center text-body-mobile md:text-body">
+  class="font-inter dark:bg-surface-dark dark:text-on-surface-dark bg-surface-bright text-on-surface min-h-screen py-12 px-4 md:px-12 flex flex-col items-center text-body-mobile md:text-body">
   <!-- Main Workspace (Single Column) -->
   <main class="w-full max-w-3xl space-y-2xl">
     <!-- Header Branding -->
-    <header class="text-center">
-      <h1 class="text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight mb-2">
-        GPay <span class="text-primary">My Activity</span> To <span class="text-secondary">CSV</span>
+    <header
+      class=" dark:bg-surface-container-lowest-dark text-center bg-surface-container-lowest p-6 rounded-4xl flex justify-between items-center gap-2 shadow-sm/5">
+      <div class="hidden md:block w-8 h-8"></div>
+      <h1 class="dark:text-on-surface-dark text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+        GPay <span class="dark:text-primary-dark text-primary">MyActivity</span> Converter
       </h1>
-      <p class="text-on-surface-variant max-w-lg mx-auto">Convert GPay My Activity HTML into clean,
-        structured CSV data.</p>
+      <button id="themeBtn"
+        class="dark:bg-surface-container-dark dark:text-outline-dark dark:hover:bg-surface-container-dark/60 cursor-pointer inline-flex items-center justify-center w-8 h-8 rounded-2xl bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-400 transition-all duration-300 ">
+        <span class="material-symbols-outlined">dark_mode</span>
+      </button>
     </header>
     <div class="space-y-12">
+      <!-- <section>
+          <p class="text-on-surface-variant">Convert GPay My Activity HTML file into clean,
+        structured CSV file.</p>
+      </section> -->
       <!-- 1. Upload Zone -->
       <section class="space-y-6">
         <div class="flex items-center gap-3">
           <h2 class=" text-headline-md-mobile md:text-headline-md">Upload HTML File</h2>
         </div>
-        <div class="flex items-center gap-3 p-4 bg-primary/5 rounded-xl border border-surface-container mb-6">
-          <div class="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center">
+        <div class="dark:bg-primary/30 dark:border-primary/40 flex items-center gap-3 p-4 bg-primary/5 rounded-xl border border-surface-container mb-6">
+          <div class="dark:bg-primary/80 dark:text-on-surface-dark flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center">
             <span class="material-symbols-outlined">shield_lock</span>
           </div>
           <div class="flex-1">
-            <p class=" text-on-surface text-primary">
+            <p class="dark:text-on-surface-dark text-primary">
               <span class="font-semibold">Privacy First:</span> All processing is performed locally in
               your browser. Your data never leaves your device.
             </p>
           </div>
         </div>
         <div
-          class="relative group cursor-pointer border-2 border-dashed border-outline-variant hover:border-primary transition-all duration-300 p-12 flex flex-col items-center justify-center text-center bg-surface-container-lowest rounded-3xl"
+          class="dark:bg-surface-container-lowest-dark dark:border-outline-variant-dark relative group cursor-pointer border-2 border-dashed border-outline-variant hover:border-primary transition-all duration-300 p-12 flex flex-col items-center justify-center text-center bg-surface-container-lowest rounded-3xl"
           id="dropzone">
           <input accept=".html,.htm,.txt" class="absolute inset-0 opacity-0 cursor-pointer" id="fileInput" type="file">
           <div
@@ -50,18 +58,18 @@
             <span class="material-symbols-outlined !text-4xl" data-original-icon="cloud_upload">upload_file</span>
           </div>
           <h3 class=" text-headline-md-mobile md:text-headline-md mb-1">Drop file here</h3>
-          <p class=" text-on-surface-variant">or click to browse from computer</p>
-          <p class="mt-4  text-outline px-3 py-1 bg-surface-container rounded">HTML, HTM allowed
+          <p class="dark:text-on-surface-variant-dark text-on-surface-variant">or click to browse from computer</p>
+          <p class="dark:bg-surface-container-dark dark:text-outline-dark mt-4  text-outline px-3 py-1 bg-surface-container rounded">HTML, HTM allowed
           </p>
         </div>
         <div
-          class="hidden min-h-[284px] p-6 border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-3xl"
+          class="dark:bg-surface-container-lowest-dark dark:border-outline-variant-dark hidden min-h-[284px] p-6 border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-3xl"
           id="file_preview">
           <div
-            class="flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
+            class="dark:bg-surface-container-low-dark dark:border-outline-variant-dark flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
             <div class="flex items-center gap-2"><span
-                class="material-symbols-outlined text-secondary">description</span>
-              <div class="flex flex-col"><span class=" font-semibold text-on-surface"
+                class="material-symbols-outlined dark:text-secondary-dark text-secondary">description</span>
+              <div class="flex flex-col"><span class=" font-semibold"
                   id="selected_file_name">filename</span>
               </div>
             </div><span
@@ -72,10 +80,10 @@
       </section>
       <!-- 2. Configuration -->
       <section class="space-y-6">
-        <div class="bg-surface-container-lowest flex flex-col rounded-xl">
-          <div class="p-6 border-b border-surface-container flex justify-between items-center ">
+        <div class="dark:bg-surface-container-lowest-dark bg-surface-container-lowest flex flex-col rounded-xl">
+          <div class="dark:border-surface-container-dark p-6 border-b border-surface-container flex justify-between items-center ">
             <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-secondary">settings</span>
+              <span class="material-symbols-outlined dark:text-secondary-dark text-secondary">settings</span>
               <h3 class=" text-headline-md-mobile md:text-headline-md">Configuration</h3>
             </div>
           </div>
@@ -83,7 +91,7 @@
             <label class="flex items-center cursor-pointer transition-all duration-300">
               <input type="checkbox" checked=""
                 class="h-5 w-5 rounded border-outline-variant accent-primary focus:ring-primary/20 transition-all">
-              <span class="ml-3 text-on-surface">Exclude unmatched records</span>
+              <span class="ml-3">Exclude unmatched records</span>
             </label>
           </div>
         </div>
@@ -103,46 +111,46 @@
         <div class="space-y-4">
           <!-- Metrics Bar -->
           <div
-            class="grid grid-cols-3 divide-x divide-outline-variant/30 bg-outline-variant/30 overflow-hidden rounded-3xl">
-            <div class="bg-surface-container-lowest p-6 text-center">
-              <p class=" text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
+            class="grid grid-cols-3 divide-x dark:divide-outline-variant-dark/30 divide-outline-variant/30 bg-outline-variant/30 overflow-hidden rounded-3xl">
+            <div class="dark:bg-surface-container-lowest-dark bg-surface-container-lowest p-6 text-center">
+              <p class="dark:text-on-surface-variant-dark text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
                 Total
               </p>
-              <p class="text-headline-lg-mobile md:text-headline-lg text-on-surface" id="metric-total">0</p>
+              <p class="text-headline-lg-mobile md:text-headline-lg" id="metric-total">0</p>
             </div>
-            <div class="bg-surface-container-lowest p-6 text-center">
-              <p class=" text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
+            <div class="dark:bg-surface-container-lowest-dark bg-surface-container-lowest p-6 text-center">
+              <p class="dark:text-on-surface-variant-dark text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
                 Matched</p>
-              <p class="text-headline-lg-mobile md:text-headline-lg text-primary" id="metric-matched">0</p>
+              <p class="text-headline-lg-mobile md:text-headline-lg dark:text-primary-dark text-primary" id="metric-matched">0</p>
             </div>
-            <div class="bg-surface-container-lowest p-6 text-center">
-              <p class=" text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
+            <div class="dark:bg-surface-container-lowest-dark bg-surface-container-lowest p-6 text-center">
+              <p class="dark:text-on-surface-variant-dark text-label-sm md:text-label-md text-on-surface-variant uppercase tracking-wider mb-1">
                 Unmatched</p>
-              <p class="text-headline-lg-mobile md:text-headline-lg text-error" id="metric-unmatched">0</p>
+              <p class="text-headline-lg-mobile md:text-headline-lg dark:text-error-dark text-error" id="metric-unmatched">0</p>
             </div>
           </div>
-          <div class="bg-surface-container-lowest flex flex-col rounded-3xl">
-            <div class="p-6 border-b border-surface-container flex justify-between items-center">
+          <div id="downloadSection" class="dark:bg-surface-container-lowest-dark bg-surface-container-lowest flex flex-col rounded-3xl">
+            <div class="dark:border-surface-container-dark p-6 border-b border-surface-container flex justify-between items-center">
               <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-secondary">download</span>
+                <span class="material-symbols-outlined dark:text-secondary-dark text-secondary">download</span>
                 <h3 class=" text-headline-md-mobile md:text-headline-md">Download</h3>
               </div>
             </div>
             <div class="p-6">
               <div id="noResultFile" class="p-3 flex flex-col items-center justify-center">
                 <div
-                  class="w-16 h-16 bg-surface-container text-outline rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  class="dark:bg-surface-container-dark w-16 h-16 bg-surface-container text-outline rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <span class="material-symbols-outlined !text-4xl" data-original-icon="cloud_upload">file_download_off</span>
                 </div>
-                <p class="text-on-surface-variant text-outline">No files converted yet</p>
+                <p class=" text-outline">No files converted yet</p>
               </div>
               <div id="resultFile"
-                class="hidden flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
+                class="dark:bg-surface-container-low-dark dark:border-outline-variant-dark hidden flex items-center justify-between mb-4 p-3 bg-surface-container-low rounded-xl border border-surface-container">
                 <div class="flex items-center gap-2"><span
-                    class="material-symbols-outlined text-secondary">description</span>
+                    class="material-symbols-outlined dark:text-secondary-dark text-secondary">description</span>
                   <div class="flex flex-col">
                     <a href="#" id="resultFileLink" title="Press to download">
-                      <span class=" font-semibold text-on-surface">converted_data.csv</span>
+                      <span class=" font-semibold">converted_data.csv</span>
                     </a>
                   </div>
                 </div><span class="material-symbols-outlined text-green-600">check_circle</span>

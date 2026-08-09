@@ -1,5 +1,61 @@
+import { THEME_DARK, THEME_ICON_MAPPING, THEME_LIGHT, THEME_SYSTEM } from './config';
 import MyActivityParser from './MyActivityParser';
 import './style.css'
+
+initTheme()
+
+document.getElementById('themeBtn').addEventListener('click',(event) => {
+    toggleTheme()
+})
+
+function initTheme(){
+    document.documentElement.classList.toggle(
+        THEME_DARK,
+        localStorage.theme === THEME_DARK ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches));
+    setThemeBtnIcon(getCurrentTheme())
+}
+
+function toggleTheme() {
+    let currentTheme = getCurrentTheme()
+    if ( currentTheme === THEME_SYSTEM) {
+        setTheme(THEME_LIGHT)
+    } else if (currentTheme === THEME_LIGHT) {
+        setTheme(THEME_DARK)
+    } else if (currentTheme === THEME_DARK) {
+        setTheme(THEME_SYSTEM)
+    } else {
+        setTheme(THEME_SYSTEM)
+    }
+}
+
+function setTheme(theme) {
+    if (theme === THEME_LIGHT) {
+        localStorage.setItem('theme',THEME_LIGHT)
+        document.documentElement.classList.remove(THEME_DARK)
+        setThemeBtnIcon(THEME_LIGHT) 
+    } else if (theme === THEME_DARK) {
+        localStorage.setItem('theme',THEME_DARK)
+        document.documentElement.classList.add(THEME_DARK)
+        setThemeBtnIcon(THEME_DARK)
+    } else {
+        // system theme
+        localStorage.removeItem('theme')
+        // use dark theme if OS preference is dark
+        document.documentElement.classList.toggle(THEME_DARK,
+            localStorage.theme === THEME_DARK || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches));
+        setThemeBtnIcon(THEME_SYSTEM)
+    }
+}
+
+function setThemeBtnIcon(theme) {
+    document.querySelector('#themeBtn span').textContent = THEME_ICON_MAPPING[theme] ?? THEME_ICON_MAPPING[THEME_SYSTEM];
+}
+
+function getCurrentTheme() {
+    return localStorage.getItem('theme') ?? THEME_SYSTEM
+}
+
 
 document.getElementById("fileInput").addEventListener("change", function (event) {
     const file = event.target.files[0];
@@ -27,6 +83,7 @@ document.getElementById('convertBtn').addEventListener('click', function (params
             if (result?.transactions.length) {
                 let csvString = collectionToCsv(result?.transactions);
                 prepareResultFile(csvString,generateResultFileName(result?.transactionMetrics));
+                document.getElementById('downloadSection').scrollIntoView({behavior: 'smooth'})
             }
         })
 })

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 
   --color-primary: #4648d4;
@@ -35,7 +37,7 @@
   --color-outline: #767586;
   --color-outline-variant: #c7c4d7;
 
-  --color-surface: #f7f9fb;
+  /* --color-surface: #f7f9fb; */
   --color-surface-container: #eceef0;
   --color-surface-container-highest: #e0e3e5;
   --color-surface-container-high: #e6e8ea;
@@ -54,6 +56,23 @@
   --color-on-error: #ffffff;
   --color-on-error-container: #93000a;
   --color-error-container: #ffdad6;
+
+    /* dark mode colors */
+
+  --color-primary-dark: #7f81ff;
+  --color-secondary-dark: #828eb0;
+
+  --color-outline-dark: var(--color-zinc-400);
+  --color-outline-variant-dark: var(--color-zinc-600);
+
+  --color-surface-container-dark: var(--color-zinc-700);
+  --color-surface-container-low-dark: var(--color-zinc-700);
+  --color-surface-container-lowest-dark: var(--color-zinc-800);
+  --color-surface-dark: var(--color-zinc-950);
+  --color-on-surface-dark: var(--color-zinc-200);
+  --color-on-surface-variant-dark: var(--color-zinc-400);
+
+  --color-error-dark:#ff4f4f;
 
   /* Border Radius */
   --radius-default: 0.125rem;
@@ -81,7 +100,7 @@
   --text-headline-lg--letter-spacing: -0.02em;
   --text-headline-lg--font-weight: 600;
 
-  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile: 23px;
   --text-headline-lg-mobile--line-height: 32px;
   --text-headline-lg-mobile--letter-spacing: -0.02em;
   --text-headline-lg-mobile--font-weight: 600;

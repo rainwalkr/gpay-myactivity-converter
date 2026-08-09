@@ -1,3 +1,4 @@
+import { THEME_DARK, THEME_ICON_MAPPING, THEME_LIGHT, THEME_SYSTEM } from './config';
 import MyActivityParser from './MyActivityParser';
 import './style.css'
 
@@ -82,6 +83,7 @@ document.getElementById('convertBtn').addEventListener('click', function (params
             if (result?.transactions.length) {
                 let csvString = collectionToCsv(result?.transactions);
                 prepareResultFile(csvString,generateResultFileName(result?.transactionMetrics));
+                document.getElementById('downloadSection').scrollIntoView({behavior: 'smooth'})
             }
         })
 })
